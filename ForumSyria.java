@@ -63,7 +63,7 @@ public class ForumSyria {
                     }
 
                     // ✅ סינון מס' 3
-                    if (wrapper.text().contains("אשכול עדכונים על המתרחש אצל שכנתנו​")) {
+                    if (wrapper.text().contains("ההפיכה בסוריה: אחרי 54 שנים משטר אסד נפל מרד פתאומי: אל-ג'ולאני עולה לשלטון הכאוס:")) {
                         continue;
                     }
 
