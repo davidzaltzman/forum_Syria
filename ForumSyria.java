@@ -224,7 +224,7 @@ public class ForumSyria {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("📬 עדכונים מהפורום פרוג");
+            message.setSubject("📬 עדכונים מפורום סוריה");
 
             StringBuilder emailBody = new StringBuilder("<html><body style='font-family: Arial; direction: rtl;'>");
             for (String msg : messages) {
