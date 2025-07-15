@@ -63,7 +63,7 @@ public class ForumSyria {
                     }
 
                     // ✅ סינון מס' 3
-                    if (wrapper.text().contains("כללים למשתתפים באשכול עדכונים זה")) {
+                    if (wrapper.text().contains("אשכול עדכונים על המתרחש אצל שכנתנו - סוריה​")) {
                         continue;
                     }
 
