@@ -1,0 +1,46 @@
+name: Check for New Prog Messages
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # כל 10 דקות
+  workflow_dispatch:        # מאפשר גם הפעלה ידנית
+
+permissions:
+  contents: write  # מאפשר כתיבה לקבצים (commit)
+
+jobs:
+  check-prog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'  # ודא שזו הגרסה שאתה באמת משתמש בה
+
+      - name: Compile Java code with external libraries
+        run: |
+          mkdir -p out
+          javac -cp "lib/*" -d out ForumSyria.java
+
+      - name: Run Java Program
+        run: |
+          java -cp "out:lib/*" ForumSyria
+        env:
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+      - name: Commit last.txt if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add last.txt
+          git diff --cached --quiet || git commit -m "Update last.txt"
+          git push origin main --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
