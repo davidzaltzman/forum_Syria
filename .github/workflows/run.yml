@@ -43,4 +43,4 @@ jobs:
           git diff --cached --quiet || git commit -m "Update last.txt"
           git push origin main --force
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_PAT: ${{ secrets.MY_PAT }}
