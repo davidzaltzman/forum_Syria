@@ -14,7 +14,7 @@ import org.jsoup.select.Elements;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 
-public class ForumNotifier {
+public class ForumSyria {
 
     private static final String LAST_MESSAGE_FILE = "last.txt";
     private static final int PAGES_TO_SCAN = 3;
